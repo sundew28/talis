@@ -3,6 +3,9 @@
 // convenience to get you started writing code faster.
 //             
 
+/**
+ * class Element
+ */
 class Element {  
 
   constructor(value) {
@@ -14,6 +17,9 @@ class Element {
 
 }
 
+/**
+ * class List 
+ */
 class List {
 
   constructor(arr = []) {
@@ -23,24 +29,28 @@ class List {
 
   }
 
+// get the lenght
   get length() {
 
     return this.countNodes()
 
   }
-  
+
+// add the elements
   add(el) {
 
     this.head = {...el, next: this.head}
 
   }
 
+// count the number of the nodes
   countNodes(node = this.head, count = 0){
 
     return node ? this.countNodes(node.next, ++count) : count;
 
   }
 
+// convert to array
   toArray(node = this.head, arr = []) {
 
     arr.push(node.value)
@@ -56,6 +66,7 @@ class List {
 
   }
 
+// reverse the list
   reverse(prev = null) {
 
     if (this.head.next) {
@@ -68,12 +79,14 @@ class List {
     }
 
     this.head.next = prev
-
     return this
 
   }
 
 }   
+/**
+ * export the class
+ */ 
 
 export { 
 
