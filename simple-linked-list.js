@@ -1,10 +1,7 @@
 //
 // This is only a SKELETON file for the 'Simple Linked List' exercise. It's been provided as a
 // convenience to get you started writing code faster.
-//
-
-
-              
+//             
 
 class Element {  
 
@@ -31,6 +28,7 @@ class List {
     return this.countNodes()
 
   }
+  
   add(el) {
 
     this.head = {...el, next: this.head}
