@@ -3,42 +3,83 @@
 // convenience to get you started writing code faster.
 //
 
-export class Element {
-  constructor() {
-   
-  }
 
-  get value() {
-    throw new Error('Remove this statement and implement this function');
-  }
+              
 
-  get next() {
-    throw new Error('Remove this statement and implement this function');
-  }
+class Element {  
+
+  constructor(value) {
+
+    this.value = value   
+    this.next = null
+
+  }     
+
 }
 
-export class List {
-  constructor() {
-    throw new Error('Remove this statement and implement this function');
-  }
+class List {
 
-  add(nextValue) {
-    throw new Error('Remove this statement and implement this function');
+  constructor(arr = []) {
+
+    this.head = null
+    arr.forEach(el => this.add(new Element(el)))
+
   }
 
   get length() {
-    throw new Error('Remove this statement and implement this function');
+
+    return this.countNodes()
+
+  }
+  add(el) {
+
+    this.head = {...el, next: this.head}
+
   }
 
-  get head() {
-    throw new Error('Remove this statement and implement this function');
+  countNodes(node = this.head, count = 0){
+
+    return node ? this.countNodes(node.next, ++count) : count;
+
   }
 
-  toArray() {
-    throw new Error('Remove this statement and implement this function');
+  toArray(node = this.head, arr = []) {
+
+    arr.push(node.value)
+
+    if (node.next) {
+
+      node = node.next
+      return this.toArray(node, arr)
+
+    }      
+
+    return arr
+
   }
 
-  reverse() {
-    throw new Error('Remove this statement and implement this function');
+  reverse(prev = null) {
+
+    if (this.head.next) {
+
+      const current = this.head
+      this.head = this.head.next
+      current.next = prev
+      return this.reverse(current)
+
+    }
+
+    this.head.next = prev
+
+    return this
+
   }
+
+}   
+
+export { 
+
+  Element,
+  List,
+  
 }
